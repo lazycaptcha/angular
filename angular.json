@@ -1,0 +1,36 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "projects",
+    "projects": {
+        "lazycaptcha": {
+            "projectType": "library",
+            "root": "projects/lazycaptcha",
+            "sourceRoot": "projects/lazycaptcha/src",
+            "prefix": "lz",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
+                    "options": {
+                        "project": "projects/lazycaptcha/ng-package.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/lazycaptcha/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/lazycaptcha/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular-devkit/build-angular:karma",
+                    "options": {
+                        "tsConfig": "projects/lazycaptcha/tsconfig.spec.json"
+                    }
+                }
+            }
+        }
+    }
+}

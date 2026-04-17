@@ -1,0 +1,20 @@
+{
+    "name": "@lazycaptcha/angular",
+    "version": "0.1.0",
+    "description": "Angular component and service for LazyCaptcha — self-hostable CAPTCHA. Drop-in alternative to hCaptcha and reCAPTCHA.",
+    "keywords": ["angular", "captcha", "lazycaptcha", "bot-protection"],
+    "homepage": "https://lazycaptcha.com",
+    "license": "MIT",
+    "peerDependencies": {
+        "@angular/common": ">=16.0.0",
+        "@angular/core": ">=16.0.0",
+        "rxjs": "^7.0.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    }
+}
