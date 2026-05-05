@@ -10,7 +10,7 @@ import {
     ViewChild,
     inject,
 } from '@angular/core';
-import { LazyCaptchaTheme, LazyCaptchaType } from './lazycaptcha.types';
+import { LazyCaptchaTheme, LazyCaptchaType, LazyCaptchaWidgetPreset, LazyCaptchaWidgetWidth } from './lazycaptcha.types';
 import { LazyCaptchaService } from './lazycaptcha.service';
 
 @Component({
@@ -24,8 +24,10 @@ export class LazyCaptchaComponent implements AfterViewInit, OnDestroy {
     @ViewChild('container', { static: true }) containerRef!: ElementRef<HTMLDivElement>;
 
     @Input() sitekey?: string;
-    @Input() type: LazyCaptchaType = 'auto';
-    @Input() theme: LazyCaptchaTheme = 'light';
+    @Input() type?: LazyCaptchaType;
+    @Input() theme?: LazyCaptchaTheme;
+    @Input() widget?: LazyCaptchaWidgetPreset;
+    @Input() width?: LazyCaptchaWidgetWidth;
     @Input() baseUrl?: string;
 
     @Output() readonly verify = new EventEmitter<string>();
@@ -39,7 +41,9 @@ export class LazyCaptchaComponent implements AfterViewInit, OnDestroy {
         const cfg = this.service.getConfig();
         const sitekey = this.sitekey ?? cfg.siteKey;
         const type = this.type ?? cfg.type ?? 'auto';
-        const theme = this.theme ?? cfg.theme ?? 'light';
+        const theme = this.theme ?? cfg.theme ?? 'auto';
+        const widget = this.widget ?? cfg.widget ?? 'standard';
+        const width = this.width ?? cfg.width;
         const baseUrl = this.baseUrl ?? cfg.baseUrl;
 
         if (!sitekey) {
@@ -63,6 +67,8 @@ export class LazyCaptchaComponent implements AfterViewInit, OnDestroy {
             sitekey,
             type,
             theme,
+            widget,
+            width,
             callback: (token: string) => this.verify.emit(token),
             'expired-callback': () => this.expired.emit(),
             'error-callback': (err: unknown) => this.errored.emit(err),

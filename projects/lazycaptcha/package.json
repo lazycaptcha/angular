@@ -1,6 +1,6 @@
 {
     "name": "@lazycaptcha/angular",
-    "version": "0.1.0",
+  "version": "2.0.0",
     "description": "Angular component and service for LazyCaptcha — self-hostable CAPTCHA. Drop-in alternative to hCaptcha and reCAPTCHA.",
     "keywords": ["angular", "captcha", "lazycaptcha", "bot-protection"],
     "homepage": "https://lazycaptcha.com",

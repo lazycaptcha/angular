@@ -28,6 +28,8 @@ bootstrapApplication(AppComponent, {
             baseUrl: 'https://lazycaptcha.com',    // optional
             type: 'auto',                           // optional
             theme: 'light',                         // optional
+            widget: 'standard',                     // optional
+            width: '420px',                         // optional
         }),
     ],
 });
@@ -103,14 +105,16 @@ export class ContactComponent {
 |-------|------|---------|-------------|
 | `sitekey` | `string` | (from provider) | Override the configured site key |
 | `type` | `'auto' \| 'image_puzzle' \| 'pow' \| 'behavioral' \| 'text_math' \| 'press_hold' \| 'rotate_align'` | `'auto'` | Challenge type |
-| `theme` | `'light' \| 'dark' \| 'auto'` | `'light'` | Widget theme. `'auto'` follows the host page's dark-mode class/attribute and the OS `prefers-color-scheme`. |
+| `theme` | `'light' \| 'dark' \| 'auto'` | `'auto'` | Widget theme. `'auto'` follows the host page's dark-mode class/attribute and the OS `prefers-color-scheme`. |
+| `widget` | `'standard' \| 'compact' \| 'newsletter' \| 'login'` | `'standard'` | Widget preset. `newsletter` stays intentionally skinny. |
+| `width` | `number \| string` | â€” | Optional width override. The hosted widget caps widths at `500px`. |
 | `baseUrl` | `string` | `'https://lazycaptcha.com'` | Override LazyCaptcha instance |
 
 ## Outputs
 
 | Output | Payload | When |
 |--------|---------|------|
-| `verify` | `string` | User solved the challenge |
+| `verify` | `string` | User completed the challenge flow |
 | `expired` | — | Token expired (5 min) |
 | `errored` | `unknown` | Error during load/render |
 | `loaded` | — | Widget rendered |

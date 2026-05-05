@@ -1,10 +1,14 @@
 export type LazyCaptchaType = 'auto' | 'image_puzzle' | 'pow' | 'behavioral' | 'text_math' | 'press_hold' | 'rotate_align';
 export type LazyCaptchaTheme = 'light' | 'dark' | 'auto';
+export type LazyCaptchaWidgetPreset = 'standard' | 'compact' | 'newsletter' | 'login';
+export type LazyCaptchaWidgetWidth = number | string;
 
 export interface LazyCaptchaRenderOptions {
     sitekey: string;
     type?: LazyCaptchaType;
     theme?: LazyCaptchaTheme;
+    widget?: LazyCaptchaWidgetPreset;
+    width?: LazyCaptchaWidgetWidth;
     callback?: (token: string) => void;
     'expired-callback'?: () => void;
     'error-callback'?: (err: unknown) => void;

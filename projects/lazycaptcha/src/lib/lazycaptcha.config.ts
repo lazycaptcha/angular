@@ -1,11 +1,13 @@
 import { InjectionToken, Provider } from '@angular/core';
-import { LazyCaptchaTheme, LazyCaptchaType } from './lazycaptcha.types';
+import { LazyCaptchaTheme, LazyCaptchaType, LazyCaptchaWidgetPreset, LazyCaptchaWidgetWidth } from './lazycaptcha.types';
 
 export interface LazyCaptchaConfig {
     siteKey: string;
     baseUrl?: string;
     type?: LazyCaptchaType;
     theme?: LazyCaptchaTheme;
+    widget?: LazyCaptchaWidgetPreset;
+    width?: LazyCaptchaWidgetWidth;
 }
 
 export const LAZYCAPTCHA_CONFIG = new InjectionToken<LazyCaptchaConfig>('LAZYCAPTCHA_CONFIG');
@@ -24,7 +26,8 @@ export function provideLazyCaptcha(config: LazyCaptchaConfig): Provider {
         useValue: {
             baseUrl: 'https://lazycaptcha.com',
             type: 'auto' as const,
-            theme: 'light' as const,
+            theme: 'auto' as const,
+            widget: 'standard' as const,
             ...config,
         },
     };
